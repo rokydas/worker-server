@@ -12,7 +12,9 @@ router.post('/addOrder', async (req, res) => {
             customerName: req.body.customerName,
             workerName: req.body.workerName,
             category: req.body.category,
-            status: req.body.status
+            status: req.body.status,
+            customerMobile: req.body.customerMobile,
+            workerMobile: req.body.workerMobile
         })
 
         await order.save().then(() => {

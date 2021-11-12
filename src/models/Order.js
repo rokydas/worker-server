@@ -22,6 +22,14 @@ const OrderSchema = new Schema({
         type: String,
         required: true
     },
+    workerMobile: {
+        type: String,
+        required: true
+    },
+    customerMobile: {
+        type: String,
+        required: true
+    },
     status: {
         type: String,
         enum: ['Pending', 'On going', 'Completed'],
