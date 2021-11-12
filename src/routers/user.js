@@ -41,7 +41,7 @@ router.get('/user/:email', async (req, res) => {
     const email = req.params.email
     const user = await User.find({email: email});
     if(user.length > 0) {
-        res.status(200).send({success: true, role: user[0].role, id: user[0]._id})
+        res.status(200).send({success: true, user: user[0]})
     } else {
         res.status(400).send({success: false, msg: "user not found"})
     }
@@ -55,36 +55,36 @@ router.get('/workers/:service/:criteria?', async (req, res) => {
     let users;
     if(service != 'undefined') {
         if(typeof criteria == "undefined") {
-            users = await User.find({service: service});
+            users = await User.find({service: service, role: "worker"});
         } else {
             if(criteria == "location") {
-                users = await User.find({service: service}).sort({address: 1});
+                users = await User.find({service: service, role: "worker"}).sort({address: 1});
             }
             else if(criteria == "work") {
-                users = await User.find({service: service}).sort({address: 1});
+                users = await User.find({service: service, role: "worker"}).sort({address: 1});
             }
             else if(criteria == "experience") {
-                users = await User.find({service: service}).sort({experience: 1});
+                users = await User.find({service: service, role: "worker"}).sort({experience: -1});
             }
             else {
-                users = await User.find({service: service}).sort({cost: 1});
+                users = await User.find({service: service, role: "worker"}).sort({cost: 1});
             }
         }
     } else {
         if(typeof criteria == "undefined") {
-            users = await User.find({});
+            users = await User.find({role: "worker"});
         } else {
             if(criteria == "location") {
-                users = await User.find({}).sort({address: 1});
+                users = await User.find({role: "worker"}).sort({address: 1});
             }
             else if(criteria == "work") {
-                users = await User.find({}).sort({address: 1});
+                users = await User.find({role: "worker"}).sort({address: 1});
             }
             else if(criteria == "experience") {
-                users = await User.find({}).sort({experience: 1});
+                users = await User.find({role: "worker"}).sort({experience: -1});
             }
             else {
-                users = await User.find({}).sort({cost: 1});
+                users = await User.find({role: "worker"}).sort({cost: 1});
             }
         }
         
