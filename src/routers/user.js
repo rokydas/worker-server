@@ -27,10 +27,8 @@ router.post('/addUser', async (req, res) => {
             })
         }
     
-        await user.save().then(() => {
-            res.status(200).send({success: true, msg: "User saved successfully"})
-        }) .catch(err => {
-            console.log(err)
+        await user.save((err, result) => {
+            res.status(200).send({success: true, id: result._id, msg: "User saved successfully"})
         })
     } catch {
         res.status(400).send({success: false, msg: "Something went wrong"})
