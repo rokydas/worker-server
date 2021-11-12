@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const user = require('./routers/user');
-const service = require('./routers/service');
+const user = require('./src/routers/user');
+const service = require('./src/routers/service');
 const cors = require('cors');
-const order = require('./routers/order');
+const order = require('./src/routers/order');
 
-require("./db/mongoose");
+require("./src/db/mongoose");
 require("dotenv").config();
 
 const corsOptions = {
