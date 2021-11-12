@@ -5,7 +5,6 @@
   "scripts": {
     "start": "node src/App.js",
     "start-dev": "node src/App.js",
-    "server": "nodemon \"./src/App.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "client": "npm start --prefix \"../client\"",
